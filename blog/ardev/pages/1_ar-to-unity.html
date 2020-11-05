@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+    <head>
+        <meta charset="utf-8">
+        <title>ARCoreのUnityPackageをインポートした際のエラーへの対処</title>
+        <link rel="stylesheet" href="../../style.css">
+        <!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+    </head>
+
+    <body>
+
+        <div class="header">
+            <div class="header-logo">AR開発記録</div>
+        </div>
+
+        <div class="main">
+
+            <div class="intro">
+                <div class="intro-text">
+                    <p>ARCoreのUnityPackageをインポートした際のエラーへの対処</p>
+                </div>
+            </div>
+            
+            <div class="section">
+
+                <div class="section-contents">
+                    <div class="section-title">問題</div>
+                    <p>Windows 10、Unity 2020.1.5f1 Personalの環境でARCoreの
+                        SDKパッケージ（arcore-unity-sdk-1.20.0.unitypackage）をインポートすると、次のようなエラーが出力される。</p>
+                    <!-- <pre>
+                        <code class="prettyprint">
+                        .elem {
+                            font-size: 16px;
+                        }
+                        </code>
+                    </pre> -->
+                    <br>
+                    <p style="word-break: break-all;">Assets\GoogleARCore\SDK\InstantPreview\Scripts\InstantPreviewManager.cs(33,23): error CS0234:
+                         The type or namespace name 'SpatialTracking' does not exist in the namespace 'UnityEngine'
+                          (are you missing an assembly reference?)</p>
+                    <br>
+                    <p style="word-break: break-all;">Assets\GoogleARCore\Examples\CloudAnchors\Scripts\AnchorController.cs(35,37): error CS0246:
+                         The type or namespace name 'NetworkBehaviour' could not be found 
+                         (are you missing a using directive or an assembly reference?)</p>
+                    <br>
+                    <p>…</p>
+                    <br><br>
+                </div>
+
+                <div class="section-contents">
+                    <div class="section-title">解決</div>
+                    <p>Unityの「ウィンドウ」&gt;「パッケージマネージャー」でパッケージマネージャーウィンドウを開き、
+                        その左上にある「＋」マークからgit URLからパッケージを追加する。
+                        以下の2つを追加すればよい。
+                    </p>
+                    <br>
+                    <p>com.unity.multiplayer-hlapi</p>
+                    <p>com.unity.xr.legacyinputhelpers</p>
+                    <br><br>
+                </div>
+
+                <div class="section-contents">
+                    <div class="section-title">参考文献</div>
+                    <ul>
+                        <li>
+                            <a href="https://helpdesk.unity3d.co.jp/hc/ja/articles/
+                            900002171066-Unity-2020-1-からパッケージマネージャで発見
+                            できなくなったパッケージのインストール方法">unity 日本語ヘルプデスク</a>
+                        </li>
+                        <li>
+                            <a href="https://developers.google.com/ar/develop/unity/quickstart-android">
+                            Quickstart for Android - ARCore</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+
+            <p class="line-height">&copy; 2020 pami</p>
+
+        </footer>
+
+    </body>
+
+</html>
